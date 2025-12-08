@@ -44,3 +44,10 @@ Duplicamos las card hasta tener 12 y desde el style.css aplicamos los estilos:
 ```
 
 <img src="./images/grid.png" alt="grid" title="grid cards" />
+
+## Prueba 4 - mostrar 2 cartas
+
+Duplicamos lo creado en el htlm y el main.ts de la Prueba 2, solo que diferenciando entre la card A y la card B.
+Después, cogemos los estilos aplicados en el css de la Prueba 3 y los aplicamos a las cards. En este caso al tener solo 2 cards, en lugar de 12 debemos ajustar la grid para que funcione con 2 columnas en lugar de con 4.
+
+<img src="./images/two-cards.png" alt="gridtwo-cards" title="two-cards" />
