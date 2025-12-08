@@ -51,3 +51,11 @@ Duplicamos lo creado en el htlm y el main.ts de la Prueba 2, solo que diferencia
 Después, cogemos los estilos aplicados en el css de la Prueba 3 y los aplicamos a las cards. En este caso al tener solo 2 cards, en lugar de 12 debemos ajustar la grid para que funcione con 2 columnas en lugar de con 4.
 
 <img src="./images/two-cards.png" alt="gridtwo-cards" title="two-cards" />
+
+## Prueba 5 - mapear el DIV y asignar las img correspondientes teniendo en cuenta su data-indice-id
+
+Definimos el array incluyendo el idFoto (del 1 al 6 x2, ya que se repiten las tarjetas) y asignando las url a las imágenes.
+
+En el html cada card cuenta con una imagen y le asignamos un data-indice-id (del 0 al 11 para que coincida con el índice del array). Hacemos un `.map´para recorrer el array completo y asignar a cada card su imagen.
+
+<img src="./images/div-images.png" alt="grid" title="grid cards" />
