@@ -7,9 +7,11 @@ Pasos:
 - Ejecuta el sandbox con `npm run dev`.
 - Abre el navegador en `http://localhost:5173/` (si ese puerto no te funciona, mira en la consola donde has hecho el build, puede que este ocupado y se haya abierto en otro puerto).
 
-Antes de poner el marcha el juego realizamos una serie de pruebas de concepto. Cada una de estas pruebas estará dentro de una carpeta independiente en el archivo _src_.
+Antes de poner el marcha el juego realizamos una serie de pruebas de concepto. Cada una de estas pruebas estará dentro de una carpeta independiente en el archivo _src_. Y para poder acceder al index de cada prueba deberemos modificar la url de entrada para llegar hasta la carpeta correspondiente.
 
 ## Prueba 1 - barajar las cartas
+
+URL: http://localhost:5173/src/prueba1/index.html
 
 Partimos de un array de cartas que debemos "mezclar". Devolvemos el array pero con los elementos "desordenados" para conseguir un resultado aleatorio.
 
@@ -18,6 +20,8 @@ Con la `function shuffle` recorremos todos los elementos modificando la posició
 <img src="./images/shuffle.png" alt="shuffle" title="shuffle cards" />
 
 ## Prueba 2 - Mostrar imagen y volver la carta
+
+URL: http://localhost:5173/src/prueba2/index.html
 
 Creamos un div con la imagen "vacía" y al hacer click de cambia por la imagen que definimos en la función.
 

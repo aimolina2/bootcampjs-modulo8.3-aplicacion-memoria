@@ -1,4 +1,4 @@
-console.log("Hola desde prueba2 main.ts");
+console.log("Prueba concepto 2");
 
 const changeCardsrc = (): void => {
   const imgCard = document.getElementById("img-card");

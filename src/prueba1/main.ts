@@ -1,3 +1,5 @@
+console.log("Prueba de concepto 1");
+
 let cartas: string[] = ["🐹", "🐰", "🐨", "🐻", "🐼", "🐸", "🐮", "🐵"];
 
 function shuffle(array: string[]): void {
