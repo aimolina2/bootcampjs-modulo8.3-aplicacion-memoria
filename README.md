@@ -12,3 +12,7 @@ Antes de poner el marcha el juego realizamos una serie de pruebas de concepto. C
 ## Prueba 1 - barajar las cartas
 
 Partimos de un array de cartas que debemos "mezclar". Devolvemos el array pero con los elementos "desordenados" para conseguir un resultado aleatorio.
+
+Con la `function shuffle` recorremos todos los elementos modificando la posición de forma aleatoria.
+
+<img src="./images/shuffle.png" alt="shuffle" title="shuffle cards" />
