@@ -16,3 +16,9 @@ Partimos de un array de cartas que debemos "mezclar". Devolvemos el array pero c
 Con la `function shuffle` recorremos todos los elementos modificando la posición de forma aleatoria.
 
 <img src="./images/shuffle.png" alt="shuffle" title="shuffle cards" />
+
+## Prueba 2 - Mostrar imagen y volver la carta
+
+Creamos un div con la imagen "vacía" y al hacer click de cambia por la imagen que definimos en la función.
+
+Primero, en main.ts describimos el cambio y despues lo ejecutamos al hacer click sobre el div.
