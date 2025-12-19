@@ -59,3 +59,9 @@ Definimos el array incluyendo el idFoto (del 1 al 6 x2, ya que se repiten las ta
 En el html cada card cuenta con una imagen y le asignamos un data-indice-id (del 0 al 11 para que coincida con el índice del array). Hacemos un `.map´para recorrer el array completo y asignar a cada card su imagen.
 
 <img src="./images/div-images.png" alt="grid" title="grid cards" />
+
+## Implementación
+
+### HTML
+
+En index.html montamos la grid con las tarjetas (tal y como hemos hecho en la prueba 5) + el botón de "Empezar partida", que será el encargado de barajar y resetear la partida.
