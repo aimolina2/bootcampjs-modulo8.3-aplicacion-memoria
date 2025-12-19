@@ -1,3 +1,3 @@
-import "./style.css";
+import { tablero } from "./model";
 
-console.log("Hello Typescript!");
+console.log("Tablero inicial:", tablero);
