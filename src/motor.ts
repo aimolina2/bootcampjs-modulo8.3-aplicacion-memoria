@@ -12,6 +12,31 @@ const barajarCartas = (cartas: Carta[]): Carta[] => {
 };
 
 /*
+  Una carta se puede voltear si no está encontrada y no está ya volteada, o no hay dos cartas ya volteadas
+*/
+export const sePuedeVoltearLaCarta = (
+  tablero: Tablero,
+  indice: number
+): boolean => {
+  if (tablero.cartas[indice].encontrada || tablero.cartas[indice].estaVuelta) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+export const voltearLaCarta = (tablero: Tablero, indice: number): void => {
+  console.log("tablero", tablero);
+  console.log("indice", indice);
+
+  tablero.cartas[indice].estaVuelta = true;
+  const imgCarta = document.getElementById(`img-card-${indice}`);
+  if (imgCarta && imgCarta instanceof HTMLImageElement) {
+    imgCarta.src = tablero.cartas[indice].imagen;
+  }
+};
+
+/*
 Iniciar partida
 */
 
