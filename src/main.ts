@@ -1,9 +1,5 @@
 import { tablero } from "./model";
-import {
-  iniciaPartida,
-  sePuedeVoltearLaCarta,
-  voltearLaCarta,
-} from "./motor.js";
+import { sePuedeVoltearLaCarta, voltearLaCarta, iniciaPartida } from "./motor";
 
 const buttonEmpezarPartida = document.getElementById("start-button");
 
@@ -24,15 +20,3 @@ tablero.cartas.map((carta, index) => {
     });
   }
 });
-
-// cartasArray.map((carta, index) => {
-//   const contenedorCarta = document.querySelector(`[data-indice-id="${index}"]`);
-//   if (contenedorCarta && contenedorCarta instanceof HTMLDivElement) {
-//     contenedorCarta.addEventListener("click", () => {
-//       const imgCarta = contenedorCarta.querySelector("img");
-//       if (imgCarta && imgCarta instanceof HTMLImageElement) {
-//         imgCarta.src = carta.imagen;
-//       }
-//     });
-//   }
-// });
