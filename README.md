@@ -65,3 +65,9 @@ En el html cada card cuenta con una imagen y le asignamos un data-indice-id (del
 ### HTML
 
 En index.html montamos la grid con las tarjetas (tal y como hemos hecho en la prueba 5) + el botón de "Empezar partida", que será el encargado de barajar y resetear la partida.
+
+### Iniciar partida
+
+En el botón "Empezar partida", al hacer click cargamos el tablero, barajamos y modificamos el estado a "CeroCartasLevantadas".
+
+Es en el `motor.ts` donde definimos las funciones de `barajarCartas` e `iniciaPartida`.
