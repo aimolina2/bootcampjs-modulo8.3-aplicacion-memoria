@@ -1,5 +1,6 @@
 import { IMGCARTA } from "./constantes";
 import { Carta, Tablero } from "./model";
+import { mostrarImagenCarta } from "./ui";
 
 /*
 En el motor nos va a hacer falta un método para barajar cartas
@@ -33,10 +34,13 @@ export const sePuedeVoltearLaCarta = (
 
 export const voltearLaCarta = (tablero: Tablero, indice: number): void => {
   tablero.cartas[indice].estaVuelta = true;
-  const imgCarta = document.getElementById(`img-card-${indice}`);
-  if (imgCarta && imgCarta instanceof HTMLImageElement) {
-    imgCarta.src = tablero.cartas[indice].imagen;
-  }
+  mostrarImagenCarta(tablero, indice);
+  registroEstadoPartida(tablero, indice);
+  comprobarSiSonPareja(tablero);
+};
+
+// Actualiza el estado de la partida según cuántas cartas estén volteadas
+const registroEstadoPartida = (tablero: Tablero, indice: number): void => {
   if (tablero.estadoPartida === "CeroCartasLevantadas") {
     tablero.indiceCartaVolteadaA = indice;
     tablero.estadoPartida = "UnaCartaLevantada";
@@ -44,28 +48,37 @@ export const voltearLaCarta = (tablero: Tablero, indice: number): void => {
     tablero.indiceCartaVolteadaB = indice;
     tablero.estadoPartida = "DosCartasLevantadas";
   }
+};
+
+const comprobarSiSonPareja = (tablero: Tablero): void => {
   if (tablero.estadoPartida === "DosCartasLevantadas") {
     const emparejados: boolean = sonPareja(
       tablero.indiceCartaVolteadaA!,
       tablero.indiceCartaVolteadaB!,
       tablero
     );
-    // Aquí iría la lógica para manejar si son pareja o no
-    if (emparejados) {
-      parejaEncontrada(
+    actualizarIndiceTrasComprobarPareja(tablero, emparejados);
+  }
+};
+
+const actualizarIndiceTrasComprobarPareja = (
+  tablero: Tablero,
+  emparejados: boolean
+): void => {
+  if (emparejados) {
+    parejaEncontrada(
+      tablero,
+      tablero.indiceCartaVolteadaA!,
+      tablero.indiceCartaVolteadaB!
+    );
+  } else {
+    setTimeout(() => {
+      parejaNoEncontrada(
         tablero,
         tablero.indiceCartaVolteadaA!,
         tablero.indiceCartaVolteadaB!
       );
-    } else {
-      setTimeout(() => {
-        parejaNoEncontrada(
-          tablero,
-          tablero.indiceCartaVolteadaA!,
-          tablero.indiceCartaVolteadaB!
-        );
-      }, 1000);
-    }
+    }, 1000);
   }
 };
 
