@@ -11,4 +11,5 @@ export const IMGCARTA = {
     "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/refs/heads/main/memo/5.png",
   srcImg6:
     "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/refs/heads/main/memo/6.png",
+  srcCardEmpty: "./src/images-app/empty-card.png",
 };

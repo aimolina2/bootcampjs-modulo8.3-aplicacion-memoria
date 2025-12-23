@@ -59,7 +59,6 @@ const crearColeccionDeCartasInicial = (infoCartas: InfoCarta[]): Carta[] => {
     const carta2 = crearCartaInicial(infoCarta.idFoto, infoCarta.imagen);
     cartas.push(carta1, carta2);
   });
-  console.log("Cartas creadas:", cartas);
   return cartas;
 };
 
