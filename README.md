@@ -71,3 +71,17 @@ En index.html montamos la grid con las tarjetas (tal y como hemos hecho en la pr
 En el botón "Empezar partida", al hacer click cargamos el tablero, barajamos y modificamos el estado a "CeroCartasLevantadas".
 
 Es en el `motor.ts` donde definimos las funciones de `barajarCartas` e `iniciaPartida`.
+
+### OPCIONALES. Mostrar número de intentos.
+
+Creamos un div con un párrafo en el index.html con el texto "Mostrar número de intentos". En el `ui.ts`, creamos la funcion encargada de mostrar el numero de intentos, y la llamamos dentro de la función `comprobarPareja`.
+
+Hacemos que sume +1 cada vez que comprueba si las cards volteadas son pareja y lo actualizamos en el html.
+
+### OPCIONALES. Mostra animación cuando el usuario pinche la carta.
+
+En el ui.ts creamos las funciones de entrada y de salida de la animación, indicando que se apliquen al div. En el css creamos la clase a aplicar con las características de la animación.
+
+Llamamos a la funcion de entrada `const animacionMostrarImagenCarta` en `const handleClickCarta` para que se ponga en marcha una vez hagamos click sobre la carta. Para afinar el resultado, haremos que se muestre la imagen una vez pasen unos segundos.
+
+Por otro lado la función de salida `const animacionSalidaImagenCarta`se ejecuta tras comprobar que las dos cartas volteadas no son pareja. Esta función, elimina la animación de entrada y aplica la de salida, que también hemos creado en el css, y trancurridos unos segundos borra la animación para resetear los estilos del div que contiene la carta.

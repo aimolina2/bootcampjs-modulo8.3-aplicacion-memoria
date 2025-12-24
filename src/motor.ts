@@ -98,4 +98,5 @@ export const iniciaPartida = (tablero: Tablero): void => {
     tablero.indiceCartaVolteadaA = undefined;
     tablero.indiceCartaVolteadaB = undefined;
   });
+  tablero.numeroIntentos = 0;
 };

@@ -81,11 +81,13 @@ export interface Tablero {
   estadoPartida: EstadoPartida;
   indiceCartaVolteadaA?: number;
   indiceCartaVolteadaB?: number;
+  numeroIntentos: number;
 }
 
 const crearTableroInicial = (): Tablero => ({
   cartas: cartas,
   estadoPartida: "PartidaNoIniciada",
+  numeroIntentos: 0,
 });
 
 export let tablero: Tablero = crearTableroInicial();

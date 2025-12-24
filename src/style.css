@@ -50,7 +50,7 @@ p {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 #start-button {
@@ -61,4 +61,34 @@ p {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.info-container {
+  font-size: 18px;
+  color: #333333;
+  margin-top: 20px;
+}
+
+.flip-animation {
+  animation: flip 0.5s cubic-bezier(0.455, 0.03, 0.01, 0.95) both;
+}
+@keyframes flip {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+.flip-animation-toexit {
+  animation: flip-exit 0.5s cubic-bezier(0.455, 0.03, 0.01, 0.95) both;
+}
+@keyframes flip-exit {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-180deg);
+  }
 }

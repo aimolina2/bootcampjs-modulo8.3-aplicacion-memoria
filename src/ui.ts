@@ -18,6 +18,33 @@ const mostrarImagenCarta = (tablero: Tablero, indice: number): void => {
   }
 };
 
+const animacionMostrarImagenCarta = (indice: number): void => {
+  const divCard = document.getElementById(`card-${indice}`);
+  if (divCard && divCard instanceof HTMLDivElement) {
+    divCard.classList.add("flip-animation");
+  }
+};
+
+const animacionSalidaImagenCarta = (indiceA: number, indiceB: number): void => {
+  const divCardA = document.getElementById(`card-${indiceA}`);
+  const divCardB = document.getElementById(`card-${indiceB}`);
+  if (
+    divCardA &&
+    divCardA instanceof HTMLDivElement &&
+    divCardB &&
+    divCardB instanceof HTMLDivElement
+  ) {
+    divCardA.classList.remove("flip-animation");
+    divCardB.classList.remove("flip-animation");
+    divCardA.classList.add("flip-animation-toexit");
+    divCardB.classList.add("flip-animation-toexit");
+    setTimeout(() => {
+      divCardA.classList.remove("flip-animation-toexit");
+      divCardB.classList.remove("flip-animation-toexit");
+    }, 400);
+  }
+};
+
 const ocultarImagenCarta = (index: number): void => {
   const imgCarta = document.getElementById(`img-card-${index}`);
   if (imgCarta && imgCarta instanceof HTMLImageElement) {
@@ -49,9 +76,19 @@ const comprobarPareja = (): void => {
   } else {
     setTimeout(() => {
       parejaNoEncontrada(tablero, indiceA, indiceB);
+      animacionSalidaImagenCarta(indiceA, indiceB);
       ocultarImagenCarta(indiceA);
       ocultarImagenCarta(indiceB);
     }, 1000);
+  }
+  tablero.numeroIntentos += 1;
+  mostrarNumeroIntentos();
+};
+
+const mostrarNumeroIntentos = (): void => {
+  const movesCounter = document.getElementById("moves-counter");
+  if (movesCounter && movesCounter instanceof HTMLParagraphElement) {
+    movesCounter.textContent = `Número de intentos: ${tablero.numeroIntentos}`;
   }
 };
 
@@ -68,8 +105,11 @@ export const inicializarEventosCartas = (): void => {
 
 const handleClickCarta = (index: number): void => {
   if (sePuedeVoltearLaCarta(tablero, index)) {
+    animacionMostrarImagenCarta(index);
     voltearLaCarta(tablero, index);
-    mostrarImagenCarta(tablero, index);
+    setTimeout(() => {
+      mostrarImagenCarta(tablero, index);
+    }, 150);
     comprobarPareja();
   }
 };
@@ -77,5 +117,6 @@ const handleClickCarta = (index: number): void => {
 export const ponerEnMarchaPartida = (): void => {
   iniciaPartida(tablero);
   resetearCartasUI();
+  mostrarNumeroIntentos();
   console.log("Partida iniciada", tablero);
 };
