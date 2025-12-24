@@ -85,3 +85,14 @@ En el ui.ts creamos las funciones de entrada y de salida de la animación, indic
 Llamamos a la funcion de entrada `const animacionMostrarImagenCarta` en `const handleClickCarta` para que se ponga en marcha una vez hagamos click sobre la carta. Para afinar el resultado, haremos que se muestre la imagen una vez pasen unos segundos.
 
 Por otro lado la función de salida `const animacionSalidaImagenCarta`se ejecuta tras comprobar que las dos cartas volteadas no son pareja. Esta función, elimina la animación de entrada y aplica la de salida, que también hemos creado en el css, y trancurridos unos segundos borra la animación para resetear los estilos del div que contiene la carta.
+
+### OPCIONALES. Hover en la card
+
+En el css aplicamos el estilo al hover.
+
+```
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+```
