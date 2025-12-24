@@ -47,12 +47,16 @@ Duplicamos las card hasta tener 12 y desde el style.css aplicamos los estilos:
 
 ## Prueba 4 - mostrar 2 cartas
 
+URL: http://localhost:5173/src/prueba4/index.html
+
 Duplicamos lo creado en el htlm y el main.ts de la Prueba 2, solo que diferenciando entre la card A y la card B.
 Después, cogemos los estilos aplicados en el css de la Prueba 3 y los aplicamos a las cards. En este caso al tener solo 2 cards, en lugar de 12 debemos ajustar la grid para que funcione con 2 columnas en lugar de con 4.
 
 <img src="./images/two-cards.png" alt="gridtwo-cards" title="two-cards" />
 
 ## Prueba 5 - mapear el DIV y asignar las img correspondientes teniendo en cuenta su data-indice-id
+
+URL: http://localhost:5173/src/prueba5/index.html
 
 Definimos el array incluyendo el idFoto (del 1 al 6 x2, ya que se repiten las tarjetas) y asignando las url a las imágenes.
 
@@ -66,19 +70,36 @@ En el html cada card cuenta con una imagen y le asignamos un data-indice-id (del
 
 En index.html montamos la grid con las tarjetas (tal y como hemos hecho en la prueba 5) + el botón de "Empezar partida", que será el encargado de barajar y resetear la partida.
 
-### Iniciar partida
+### Model.ts
 
-En el botón "Empezar partida", al hacer click cargamos el tablero, barajamos y modificamos el estado a "CeroCartasLevantadas".
+Incluimos las constantes iniciales y definimos los estados (tipado) que usaremos en la app.
 
-Es en el `motor.ts` donde definimos las funciones de `barajarCartas` e `iniciaPartida`.
+### Constantes.ts
 
-### OPCIONALES. Mostrar número de intentos.
+Creamos una funcion para asignar una URL a una imagen, para poder llamarlas sin necesidad de reescribir la URL.
+
+### Motor.ts
+
+Incluye las funciones que hacen que funciones el juego.
+Aqui registramos estados, los cambiamos, barajamos y realizamos las lógicas el juego, cuyos resultados se mostrarán en el UI por medio de las funciones del ui.ts
+
+### Ui.ts
+
+Todas las funciones que incluyen interactuar con la interfaz o realizar cambios en la misma. Por ejemplo todo lo que tiene que ver con la visualización de tarjetas, hacer click a un botón o mostrar avisos.
+
+### Main.ts
+
+Solo recoge las funciones que inicializan el tablero de juego.
+
+## OPCIONALES
+
+### Mostrar número de intentos.
 
 Creamos un div con un párrafo en el index.html con el texto "Mostrar número de intentos". En el `ui.ts`, creamos la funcion encargada de mostrar el numero de intentos, y la llamamos dentro de la función `comprobarPareja`.
 
 Hacemos que sume +1 cada vez que comprueba si las cards volteadas son pareja y lo actualizamos en el html.
 
-### OPCIONALES. Mostra animación cuando el usuario pinche la carta.
+### Mostrar animación cuando el usuario pinche la carta.
 
 En el ui.ts creamos las funciones de entrada y de salida de la animación, indicando que se apliquen al div. En el css creamos la clase a aplicar con las características de la animación.
 
@@ -86,7 +107,7 @@ Llamamos a la funcion de entrada `const animacionMostrarImagenCarta` en `const h
 
 Por otro lado la función de salida `const animacionSalidaImagenCarta`se ejecuta tras comprobar que las dos cartas volteadas no son pareja. Esta función, elimina la animación de entrada y aplica la de salida, que también hemos creado en el css, y trancurridos unos segundos borra la animación para resetear los estilos del div que contiene la carta.
 
-### OPCIONALES. Hover en la card
+### Hover en la card
 
 En el css aplicamos el estilo al hover.
 
@@ -96,3 +117,26 @@ En el css aplicamos el estilo al hover.
   cursor: pointer;
 }
 ```
+
+### Si una carta está volteada y hacemos click mostrar un mensaje de aviso
+
+Creamos el div para el mensaje en el html y los estilos en la hoja css.
+En ui.ts creamos una función para mostrar el mensaje cuando hacemos click.
+
+```
+const textoAviso = (index: number): void => {
+  if (tablero.cartas[index].estaVuelta === true) {
+    const warning = document.getElementById("warning");
+    if (warning && warning instanceof HTMLParagraphElement) {
+      warning.classList.add("warning");
+      warning.textContent = "¡Esta carta ya está volteada! Prueba con otra.";
+      setTimeout(() => {
+        warning.textContent = "";
+        warning.classList.remove("warning");
+      }, 2000);
+    }
+  }
+};
+```
+
+Esta función se activa en la `const handleClickCarta`,

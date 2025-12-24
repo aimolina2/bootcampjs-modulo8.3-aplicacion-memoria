@@ -72,6 +72,7 @@ p {
   font-size: 18px;
   color: #333333;
   margin-top: 20px;
+  text-align: center;
 }
 
 .flip-animation {
@@ -96,4 +97,13 @@ p {
   to {
     transform: rotateY(-180deg);
   }
+}
+
+.warning {
+  color: rgb(250, 58, 58);
+  height: 24px;
+  border: 1px solid rgb(250, 58, 58);
+  padding: 4px;
+  border-radius: 4px;
+  background-color: rgba(250, 58, 58, 0.135);
 }

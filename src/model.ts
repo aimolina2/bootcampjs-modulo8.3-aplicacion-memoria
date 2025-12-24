@@ -1,9 +1,8 @@
 import { IMGCARTA } from "./constantes";
 
 export interface Carta {
-  idFoto: number; // id del 1 al 6 para 12 cartas, así identificamos rápido si es un gatito ,un perrito...
-  // el ID se repete 2 veces en el array de cartas (hay dos cartas de un perro, hay dos cartas de un gato)
-  imagen: string; // por comodidad repetimos la url de la imagen
+  idFoto: number;
+  imagen: string;
   estaVuelta: boolean;
   encontrada: boolean;
 }

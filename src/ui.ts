@@ -104,6 +104,7 @@ export const inicializarEventosCartas = (): void => {
 };
 
 const handleClickCarta = (index: number): void => {
+  textoAviso(index);
   if (sePuedeVoltearLaCarta(tablero, index)) {
     animacionMostrarImagenCarta(index);
     voltearLaCarta(tablero, index);
@@ -111,6 +112,20 @@ const handleClickCarta = (index: number): void => {
       mostrarImagenCarta(tablero, index);
     }, 150);
     comprobarPareja();
+  }
+};
+
+const textoAviso = (index: number): void => {
+  if (tablero.cartas[index].estaVuelta === true) {
+    const warning = document.getElementById("warning");
+    if (warning && warning instanceof HTMLParagraphElement) {
+      warning.classList.add("warning");
+      warning.textContent = "¡Esta carta ya está volteada! Prueba con otra.";
+      setTimeout(() => {
+        warning.textContent = "";
+        warning.classList.remove("warning");
+      }, 2000);
+    }
   }
 };
 
