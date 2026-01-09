@@ -63,26 +63,39 @@ const mostrarMensajePartidaCompleta = (): void => {
 };
 
 const comprobarPareja = (): void => {
-  if (tablero.estadoPartida !== "DosCartasLevantadas") return;
   const indiceA = tablero.indiceCartaVolteadaA!;
   const indiceB = tablero.indiceCartaVolteadaB!;
-  const emparejados: boolean = sonPareja(indiceA, indiceB, tablero);
-  if (emparejados) {
-    parejaEncontrada(tablero, indiceA, indiceB);
-    const partidaCompleta = esPartidaCompleta(tablero);
-    if (partidaCompleta) {
-      mostrarMensajePartidaCompleta();
-    }
-  } else {
-    setTimeout(() => {
-      parejaNoEncontrada(tablero, indiceA, indiceB);
-      animacionSalidaImagenCarta(indiceA, indiceB);
-      ocultarImagenCarta(indiceA);
-      ocultarImagenCarta(indiceB);
-    }, 1000);
+  if (indiceA !== undefined && indiceB !== undefined) {
+    sonPareja(indiceA, indiceB, tablero)
+      ? encontradaPareja(tablero, indiceA, indiceB)
+      : noEncontradaPareja(tablero, indiceA, indiceB);
+    tablero.numeroIntentos += 1;
+    mostrarNumeroIntentos();
   }
-  tablero.numeroIntentos += 1;
-  mostrarNumeroIntentos();
+};
+
+const encontradaPareja = (
+  tablero: Tablero,
+  indiceA: number,
+  indiceB: number
+) => {
+  parejaEncontrada(tablero, indiceA, indiceB);
+  const partidaCompleta = esPartidaCompleta(tablero);
+  if (partidaCompleta) {
+    mostrarMensajePartidaCompleta();
+  }
+};
+const noEncontradaPareja = (
+  tablero: Tablero,
+  indiceA: number,
+  indiceB: number
+) => {
+  setTimeout(() => {
+    parejaNoEncontrada(tablero, indiceA, indiceB);
+    animacionSalidaImagenCarta(indiceA, indiceB);
+    ocultarImagenCarta(indiceA);
+    ocultarImagenCarta(indiceB);
+  }, 1000);
 };
 
 const mostrarNumeroIntentos = (): void => {

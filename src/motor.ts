@@ -44,11 +44,7 @@ export const sonPareja = (
   indiceB: number,
   tablero: Tablero
 ): boolean => {
-  if (tablero.cartas[indiceA].idFoto === tablero.cartas[indiceB].idFoto) {
-    return true;
-  } else {
-    return false;
-  }
+  return tablero.cartas[indiceA].idFoto === tablero.cartas[indiceB].idFoto;
 };
 
 export const parejaEncontrada = (
